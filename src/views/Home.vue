@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Todo :items="items" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Todo from '@/components/Todos.vue'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'home',
   components: {
-    HelloWorld
+    Todo
+  },
+  computed: {
+    ...mapGetters(['items'])
   }
 }
 </script>
+
+<style lang="scss" scoped>
+</style>
