@@ -5,24 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    items: [
-      {
-        id: 1,
-        title: 'Duoをやる',
-        isFinished: false
-      },
-      {
-        id: 2,
-        title: 'HIITをやる',
-        isFinished: false
-      }
-    ]
+    items: []
   },
   getters: {
-    items: state => state.items
+    items: state => state.items,
+    totalNum: state => state.items.length
   },
   mutations: {
-    updateTodo (state, todo) {
+    addTodo (state, todo) {
+      state.items.push(todo)
+    },
+    updateStatus (state, todo) {
       state.items.map(item => {
         if (item.id === todo.id) {
           item.isFinished = todo.isFinished
@@ -31,9 +24,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    addTodo ({ commit }, todo) {
+      commit('addTodo', todo)
+    },
     doAction ({ commit }, todo) {
       todo.isFinished = !todo.isFinished
-      commit('updateTodo', todo)
+      commit('updateStatus', todo)
     }
   }
 })

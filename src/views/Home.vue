@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <Todo :items="items" />
+    <div v-if="totalNum < 1">
+      no data...
+    </div>
+    <Todo :items="items" v-else />
   </div>
 </template>
 
@@ -14,7 +17,7 @@ export default {
     Todo
   },
   computed: {
-    ...mapGetters(['items'])
+    ...mapGetters(['items', 'totalNum'])
   }
 }
 </script>

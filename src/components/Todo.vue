@@ -2,7 +2,7 @@
   <div :class="todo.isFinished ? 'is-finished' : ''">
     <span class="checkbox" @click="onClick" />
     <span class="title">
-      {{ todo.title }}
+      {{ todo.id }}: {{ todo.title }}
     </span>
   </div>
 </template>
